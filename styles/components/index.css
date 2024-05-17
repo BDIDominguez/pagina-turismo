@@ -43,7 +43,10 @@
 }
 
 */
-
+.index-main {
+  height: auto;
+  
+}
 
 .index-contenedor-buscador {
     display: flex; /* Convertir el contenedor en un contenedor flex */
@@ -123,6 +126,7 @@
   img{
     width: 100%;
     max-height: 150px;
+    max-width: 200px;
     object-fit: fill;
     border-radius: 8px;
     /* height: 25%; */

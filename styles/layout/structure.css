@@ -1,0 +1,10 @@
+.botones {
+    padding: 10px 20px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--color-amarillo-oro);
+    color: white;
+    font-size: var(--fn-tamaño-gigante);
+    cursor: pointer;
+}

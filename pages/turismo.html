@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Sitios Turísticos</title>
+    <link rel="stylesheet" href="./assets/css/turismo_styles.css"> <!-- Enlace al CSS específico de turismo.html -->
+    <link rel="stylesheet" href="../../styles/theme/variables.css"> <!-- Enlace al CSS global -->
+    <link rel="stylesheet" href="../../styles/layout/structure.css"> <!-- Enlace al CSS global -->
+    <link rel="stylesheet" href="../../styles/components/header.css"> <!-- Enlace al CSS global -->
+    <link rel="stylesheet" href="../../styles/components/index.css"> <!-- Enlace al CSS global -->
+    
+</head>
+<body>
+    <div class="container">
+        <h1>Formulario de Sitios Turísticos</h1>
+        <form id="formulario">
+            <label for="nombre">Nombre del Sitio:</label>
+            <input type="text" id="nombre" required>
+
+            <label for="provincia">Provincia:</label>
+            <input type="text" id="provincia" required>
+
+            <label for="pais">País:</label>
+            <input type="text" id="pais" required>
+
+            <label for="descripcion">Descripción de los Atractivos:</label>
+            <textarea id="descripcion" rows="4" required></textarea>
+
+            <label for="foto">Foto del Lugar (JPEG):</label>
+            <input type="file" id="foto" accept="image/jpeg" required>
+
+            <label for="hospedajes">Hospedajes:</label>
+            <input type="text" id="hospedajes" required>
+
+            <label for="transporte">Medios de Transporte:</label>
+            <input type="text" id="transporte" required>
+
+            <label for="formas_llegar">Formas de Llegar:</label>
+            <textarea id="formas_llegar" rows="4" required></textarea>
+
+            <button type="button" onclick="guardarDatos()">Guardar Datos</button>
+        </form>
+    </div>
+
+    <script src="./assets/js/adriana.js"></script>
+</body>
+</html>

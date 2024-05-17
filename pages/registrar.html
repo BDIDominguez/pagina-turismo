@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+    <script src="../assets/js/registrar.js" type="module"></script> 
+    <title>Alta de Usuario Nuevo</title>
+  </head>
+  <body>
+    <main>
+      <div class="registrar-contenedor-buscador">
+        <!-- <a href="https://ibb.co/8MPLpzp"><img src="https://i.ibb.co/8MPLpzp/imagen.jpg" alt="imagen" border="0"></a> -->
+
+        <h2>Registro de Usuario</h2>
+        <form
+          class="registro-formulario"
+          id="formulario-de-registro"
+          enctype="multipart/form-data"
+        >
+          <div>
+            <label for="registro-foto-perfil">Foto de Perfil:</label>
+            <input
+              type="file"
+              id="registro-foto-perfil"
+              name="photo"
+            />
+            <img
+              id="registro-foto-actual"
+              src="https://i.ibb.co/8MPLpzp/imagen.jpg"
+              alt="Preview de la imagen"
+              style="max-width: 200px; margin-top: 10px"
+            />
+          </div>
+          <div>
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="registro-nombre" name="nombre" required />
+          </div>
+          <div>
+            <label for="apellido">Apellido:</label>
+            <input type="text" id="registro-apellido" name="apellido" required />
+          </div>
+          <div>
+            <label for="fechaNacimiento">Fecha de Nacimiento:</label>
+            <input type="date" id="registro-fecha-nacimiento" name="fechaNacimiento" required />
+          </div>
+          <div>
+            <label for="nombreUsuario">Nombre de Usuario:</label>
+            <input type="text" id="registro-nombre-usuario" name="nombreUsuario" required />
+          </div>
+          <div>
+            <label for="clave">Clave:</label>
+            <input type="password" id="registro-clave" name="clave" required />
+          </div>
+          <div>
+            <label for="confirmarClave">Confirmar Clave:</label>
+            <input type="password" id="registro-confirmar-clave" name="confirmarClave" required />
+          </div>
+          <div>
+            <button type="submit">Registrar</button>
+          </div>
+        </form>
+      </div>
+    </main>
+    <!-- <script src="../assets/js/dario.js"></script> -->
+  </body>
+</html>
