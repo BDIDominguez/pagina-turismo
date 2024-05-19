@@ -292,10 +292,10 @@ export async function subirImagen(archivo) {
       body: data,
     });
     const datosregresados = await respuesta.json();
-    //console.log("Datos de Respuesta " + datosregresados);
-    //console.log("URL " + datosregresados.data.url);
-    //console.log("Miniatura " + datosregresados.data.thumb.url);
-    //console.log("Estado " + datosregresados.success);
+    // console.log("Datos de Respuesta " + datosregresados);
+    // console.log("URL " + datosregresados.data.url);
+    // console.log("Miniatura " + datosregresados.data.thumb.url);
+    // console.log("Estado " + datosregresados.success);
     return [datosregresados.data.url, datosregresados.data.thumb.url, datosregresados.success];
   } catch (error) {
     console.error(error);

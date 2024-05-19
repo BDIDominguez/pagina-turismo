@@ -18,7 +18,7 @@
       <div class="contenedor-link-header">
         <ul>
           <li><a href="../index.html">Inicio</a></li>
-          <li><a href="./turismo.html">Turismo</a></li>
+          <li><a href="./turismo.html">Cuentanos!</a></li>
           <li><a href="./guias.html">Guias</a></li>
           <li><a href="./acceder.html">Acceder</a></li>
           <li><a href="./registrar.html">Registrar</a></li>
@@ -31,8 +31,8 @@
           <h2>Registro de Usuario</h2>
           <div class="registrar-foto-perfil">
             <img id="registrar-foto-actual" src="https://i.ibb.co/8MPLpzp/imagen.jpg" alt="Preview de la imagen"/>
-            <label for="registrar-foto-perfil">Foto de Perfil:</label>
-            <input type="file" id="registrar-foto-perfil" name="photo"/>
+            <label class="input-formulario-file-label" for="registrar-foto-perfil">Cambiar Foto</label>
+            <input class="input-formulario-file" type="file" id="registrar-foto-perfil" name="photo"/>
           </div>
           <div class="input-formulario">
             <input type="email" id="registrar-correo" name="correo" required />
@@ -51,8 +51,8 @@
             <label for="registrar-apellido">Apellido:</label>
           </div>
           <div class="input-formulario">
-            <input type="date" id="registrar-fecha-nacimiento" name="fechaNacimiento" required />
-            <label for="registrar-fecha-nacimiento">Fecha de Nacimiento:</label>
+            <input class="input-formulario-fecha"   type="date" id="registrar-fecha-nacimiento" name="fechaNacimiento" required placeholder="PON UNA FECHA"/>
+            <label class="label-formularios-fecha" for="registrar-fecha-nacimiento">Fecha de Nacimiento:</label>
           </div>
           <div class="input-formulario">
             <input type="text" id="registrar-nombre-usuario" name="nombreUsuario" required />
@@ -66,13 +66,13 @@
             <input type="password" id="registrar-confirmar-clave" name="confirmarClave" required />
             <label for="registrar-confirmar-clave">Confirmar Clave:</label>
           </div>
-          <div>
-            <div>
+          <div class="formulario-boton-acciones">
+            <div class="formulario-terminos-condiciones">
               <input type="checkbox" name="checkbox" id="registrar-formulario-checkbox">
               <p>Estoy de acuerdo con los terminos y condiciones</p>
               <a href="#" target="_blank" rel="noopener noreferrer">Terminos y condiciones</a>
             </div>
-            <button type="button" id="registrar-boton-cargar">Registrar</button>
+            <button class="botones-formularios" type="button" id="registrar-boton-cargar">Registrar</button>
             <a href="#">Ya tengo una cuenta!</a>
           </div>
         </form>

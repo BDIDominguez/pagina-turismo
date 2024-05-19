@@ -8,21 +8,45 @@ import {
 import { Usuario } from "./objetos.js";
 
 document.addEventListener("DOMContentLoaded", function () {
-  // Funcion para la carga del usuario
+  // Funcion que carga la imagen en el elemento img sin necesidad de eviarla al servidor y ya tenerla para luego enviarla
+  // si la foto no carga o no se eligue foto se usa la predeterminada
+  document.getElementById("registrar-foto-perfil").addEventListener("change", e => {
+    const elementoImagen = document.getElementById("registrar-foto-actual")
+    if (e.target.files[0]){ // si existe algun archivo regresa true
+      const lector = new FileReader()
+      lector.onload = function(e){
+        elementoImagen.src = e.target.result
+      } 
+      lector.readAsDataURL(e.target.files[0])      
+    }else{
+      elementoImagen.src = "https://i.ibb.co/8MPLpzp/imagen.jpg"
+    }
+  })
+ 
   document.getElementById("registrar-boton-cargar").addEventListener("click", cargarRegistro);
-
+  
   // Funcion que carga el usuario de no encontrar el mismo dni en la base de datos
   async function cargarRegistro() {
+    // seleccionamos los elementos que marcaran una animacion para esperar que se cargue!!
+    const botonCargar = document.getElementById("registrar-boton-cargar");
+    const formulario = document.getElementById("formulario-de-registro");
+    // Agregar clases de carga
+    botonCargar.classList.add("loading-button");
+    formulario.classList.add("loading-cursor");
+
+
     const dni = document.getElementById("registrar-dni").value
-    const existe = await consultarUsuarioDNI(document.getElementById("registrar-correo").value);
-    if (existe.dni !== dni ) {
+    const existe = await consultarUsuarioDNI(document.getElementById("registrar-correo").value); // consultamos si existe el DNI en el servidor
+    if (existe.dni !== dni ) {  // Si no existe empezamos el proceso de preparar datos para ser enviados al servidor
+      // Subimos la imagen!!
+      let url = "", miniatura = "", success = false
+      const inputFile = document.getElementById("registrar-foto-perfil");
+      if (inputFile.files.length > 0) {// Verificamos que haya un archivo en el input
+        [url, miniatura, success] = await subirImagen({target: { files: [inputFile.files[0]] } }); // Subimos la Imagen
+      }
+      // Configuramos la fecha para que se guarde con un formato AAAA/MM/DD de lo contrario lo guarda como un entero con los cantidad de dias pasados de la creacion del javascript no entendi eso pero es solo un numero
       const fechaNacimiento = new Date(document.getElementById("registrar-fecha-nacimiento").value);
       const fechaFormateada = fechaNacimiento.toISOString().split('T')[0];
-      const imagen = document.getElementById("registrar-foto-actual")
-      const fullsize = ""
-      if (imagen.getAttribute("data-fullsize") != null){
-        fullsize = imagen.getAttribute("data-fullsize")
-      }
       const usuario = new Usuario(
         0,
         dni,
@@ -32,38 +56,28 @@ document.addEventListener("DOMContentLoaded", function () {
         fechaFormateada,
         document.getElementById("registrar-nombre-usuario").value,
         document.getElementById("registrar-clave").value,
-        imagen.src,
-        fullsize
+        url,
+        miniatura
       );
       const vResp = await subirUsuario(usuario);
       if (vResp){
         alert("Se cargo con exito el usuario")
+        botonCargar.classList.remove("loading-button");
+        formulario.classList.remove("loading-cursor");
       }else{
         alert("Hubo un error al cargar el usuario")
+        botonCargar.classList.remove("loading-button");
+        formulario.classList.remove("loading-cursor");
       }
     } else {
       alert("Ese Usuario ya existe");
+      botonCargar.classList.remove("loading-button");
+      formulario.classList.remove("loading-cursor");
     }
   }
 
-  // Cargamos la imagen seleccionada al servidor y le regresamos las rutas relativas a las fotos cargadas
-  const idinputFile = "registrar-foto-perfil";
-  document.getElementById(idinputFile).addEventListener("change", async () => {
-    const inputFile = document.getElementById(idinputFile);
-    if (inputFile.files.length > 0) {
-      // Verificamos que haya un archivo en el input
-      const [url, miniatura, success] = await subirImagen({
-        target: { files: [inputFile.files[0]] },
-      });
-      document.getElementById("registrar-foto-actual").src = miniatura;
-      document.getElementById("registrar-foto-actual").setAttribute("data-fullsize", url);
-      // console.log("URL de la imagen: ", url);
-      // console.log("URL de la miniatura: ", miniatura);
-      // console.log("Éxito: ", success);
-    } else {
-      console.log("No se Selecciono ningun archivo.");
-    }
-  });
+  
+
 
   // SECCION DEL SUSCRIBIR CARGA Y CONTROL
   const btSuscrptor = "footer-boton-suscriptor";
