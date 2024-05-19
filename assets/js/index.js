@@ -44,7 +44,6 @@ async function consultarPuntos(filtro) {
 
 
 // SECCION DEL SUSCRIBIR CARGA Y CONTROL
-
 const btSuscrptor = "footer-boton-suscriptor";
 // ESCUCHAMOS AL BOTON SUSCRIBIR Y LLAMAMOS A LA FUNCION DE CARGA
 document.getElementById(btSuscrptor).addEventListener("click", () => cargarSuscriptor());

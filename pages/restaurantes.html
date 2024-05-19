@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Restaurantes ─ Turismo</title>
+  <link rel="stylesheet" href="/assets/css/restaurantes.css">
+</head>
+<body>
+    <!-- inicio de formulario de búsqueda -->
+    <section class="contenedor">
+      <h1>Restaurantes en .....</h1>
+      <div class="sombra pdg-18 card-resto">
+        <!-- <form>
+          <fieldset>
+            <legend>Filtrar por:</legend>
+
+          <div style="border: 1px solid salmon;">
+            <div>
+              <input type="text" placeholder="Ubicación ">
+            </div>
+
+            <div>
+              <input type="text" placeholder="Servicios ">
+            </div>
+
+            <div>
+              <input type="text" placeholder="Precio ">
+            </div>
+
+            <div>
+              <input type="text" placeholder="Cocina ">
+            </div>
+
+            <div>
+              <input type="text" placeholder="Comidas ">
+            </div>
+
+            <div>
+              <input type="text" placeholder="Invitados">
+            </div>
+          </div>
+          </fieldset>
+        </form> -->
+
+        <form class="filter-form">
+          <div class="filter-row">
+            <div class="filter-item">
+              <label for="location">Ubicación:</label>
+              <select id="location">
+                <option value="">Todas</option>
+                <option value="center">Centro</option>
+                <option value="north">Norte</option>
+                <option value="south">Sur</option>
+              </select>
+            </div>
+            <div class="filter-item">
+              <label for="services" class="fix-letter">Servicios:</label>
+              <select id="services">
+                <option value="">Todos</option>
+                <option value="wifi">Wi-Fi</option>
+                <option value="parking">Estacionamiento</option>
+                <option value="delivery">Entrega a domicilio</option>
+              </select>
+            </div>            
+          </div>
+          <div class="filter-row">
+            <div class="filter-item">
+              <label for="guests">Invitados:</label>
+              <select id="guests">
+                <option value="">Todos</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="4">4</option>
+                <option value="6">6</option>
+              </select>
+            </div>
+           
+            <div class="filter-item">
+              <label for="food" class="fix-letter">Comidas:</label>
+              <select id="food">
+                <option value="">Todas</option>
+                <option value="mexican">Mexicana</option>
+                <option value="italian">Italiana</option>
+                <option value="chinese">China</option>
+              </select>
+            </div>
+          </div>
+          <div class="filter-row">
+
+            <div class="filter-item">
+              <label for="price" class="fix-letter">Precio:</label>
+              <select id="price">
+                <option value="">Todos</option>
+                <option value="low">Bajo</option>
+                <option value="medium">Medio</option>
+                <option value="high">Alto</option>
+              </select>
+            </div>
+            
+            <div class="filter-item">
+              <label for="cuisine">Cocina:</label>
+              <select id="cuisine">
+                <option value="">Todas</option>
+                <option value="mexican">Mexicana</option>
+                <option value="italian">Italiana</option>
+                <option value="chinese">China</option>
+              </select>
+            </div>
+          </div>
+        </form>
+      </div>
+
+    </section>
+    <!-- fin de formulario de búsqueda -->
+
+    <!-- inicio de tarjetas restaurantes -->
+    <main class="contenedor">
+      <div class="sombra mgb-20 pdg-18 card-resto">
+        <div class="restaurante-info">
+          <div>
+            <img class="imagen-restaurante" src="/assets/images/restaurants/frenessi-buenos-aires.jpg" alt="Frenessí Buenos Aires" >
+          </div>
+          <div class="descripcion-restaurante">
+            <a class="nombre-restaurant" href="#">Frenessí Buenos Aires</a>
+            <strong>Valoración:</strong> <span>4</span>
+            <strong>Telefóno:</strong> <span>+ 54 11 3666-8510</span>
+            <span>Página web</span>
+            <p>Juana Manso 1860, Planta Baja Puerto Madero, Buenos Aires Argentina</p>
+            <p>Horario de Atención</p>
+            
+            <p>"Increible"</p>
+            <p>"Asombroso, increíble, un “must”"</p>
+            <a href="#">Reservar</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="sombra mgb-20 pdg-18 card-resto">
+        <div class="restaurante-info">
+          <div>
+            <img class="imagen-restaurante" src="/assets/images/restaurants/vive-cafe_1.jpg" alt="Vive Café Buenos Aires">
+          </div>
+          <div class="descripcion-restaurante">
+            <a class="nombre-restaurant" href="#">Vive Café</a>
+            <strong>Valoración:</strong> <span>4</span>
+            <strong>Telefóno:</strong> <span>+54 11 4774-5461</span>
+            <span>Página web</span>
+            <p>Costa Rica 5722, Buenos Aires 1414 Argentina</p>
+            <p>Horario de Atención</p>
+            
+            <p>"El mejor café de BA"</p>
+            <p>"La mejor cafetería en Buenos aires"</p>
+            <a href="#">Reservar</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="sombra mgb-20 pdg-18 card-resto">
+        <div class="restaurante-info">
+          <div>
+            <img class="imagen-restaurante" src="/assets/images/restaurants/4ta-pared.jpg" alt="4ta Pard">
+          </div>
+          <div class="descripcion-restaurante">
+            <a class="nombre-restaurant" href="#">4ta Pared</a>
+            <strong>Valoración:</strong> <span>Valoración: 4</span>
+            <strong>Telefóno:</strong> <span>+ 54 11 3666-8510</span>
+            <span>Página web</span>
+            <p>Calle Habana 3499, Buenos Aires C1419GQA Argentina</p>
+            <p>Horario de Atención</p>
+            
+            <p>"Super recomendado"</p>
+            <p>"Tanto la atención como el lugar son muy buenas"</p>
+            <a href="#">Reservar</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="sombra mgb-20 pdg-18 card-resto">
+        <div class="restaurante-info">
+          <div>
+            <img class="imagen-restaurante" src="/assets/images/restaurants/criolla-cooking-y-wine.jpg" alt="Criolla Cooking y Wine">
+          </div>
+          <div>
+            <a class="nombre-restaurant" href="#">Criolla Cooking & Wine</a>
+            <strong>Valoración:</strong> <span>Valoración: 5</span>
+            <strong>Telefóno:</strong> <span>+54 9 11 5984-2884</span>
+            <span>Página web</span>
+            <p>Gorriti 4832, Buenos Aires 1414 Argentina</p>
+            <p>Horario de Atención</p>
+            
+            <p>"Must si te gusta cocinar"</p>
+            <p>"Una experiencia que vale la pena tomar"</p>
+            <a href="#">Reservar</a>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- fin de tarjetas restaurantes -->
+</body>
+</html>
