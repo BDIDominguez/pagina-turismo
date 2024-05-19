@@ -69,8 +69,10 @@ export class Punto {
  * estructura de la clase Usuario
  */
 export class Usuario {
-    constructor (id,nombre,apellido,fechaNacimiento,usuario,clave,foto,fotoMiniatura){
+    constructor (id,dni,correo,nombre,apellido,fechaNacimiento,usuario,clave,foto,fotoMiniatura){
       this.id = id
+      this.dni = dni
+      this.correo = correo
       this.nombre = nombre
       this.apellido = apellido
       this.fechaNacimiento = fechaNacimiento

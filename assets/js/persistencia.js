@@ -43,8 +43,8 @@ import { Usuario } from "./objetos.js";
 
 /**
  * Funcion que regresa un objeto con los registros que contengan un ID igual al pasado si por casualidad se crearn mas de 1 regresara todos pero solo mostrara el primero
- * @param {*} id 
- * @returns 
+ * @param {*} id  id del usuario
+ * @returns   regresa con el usuario
  */
 export async function consultarUsuario(id){
   let resp = new Usuario;
@@ -56,6 +56,45 @@ export async function consultarUsuario(id){
       data.forEach(item => {
         const usuario = new Usuario(
           item.id,
+          item.dni,
+          item.correo,
+          item.nombre,
+          item.apellido,
+          item.fechaNacimiento,
+          item.usuario,
+          item.clave,
+          item.foto,
+          item.fotoMiniatura
+        )
+        resp = (usuario)
+      })
+      return resp
+    }else{
+      return []
+    }
+  }else{
+    // Si la respuesta del servidor no fue exitosa, lanzar un error o manejarlo según sea necesario
+    throw new Error("Error al obtener los datos de los usuarios")
+  }
+}
+
+/**
+ * Funcion que regresa un objeto con los registros que contengan un ID igual al pasado si por casualidad se crearn mas de 1 regresara todos pero solo mostrara el primero
+ * @param {*} dni  dni del usuario
+ * @returns   regresa con el usuario
+ */
+export async function consultarUsuarioDNI(dni){
+  let resp = new Usuario;
+  const url = `https://sheetdb.io/api/v1/tv96lgxabh427/search?dni=${dni}&sheet=usuarios` 
+  const respuesta = await fetch(url)
+  if (respuesta.ok) {
+    const data = await respuesta.json()
+    if (data && data.length > 0) {
+      data.forEach(item => {
+        const usuario = new Usuario(
+          item.id,
+          item.dni,
+          item.correo,
           item.nombre,
           item.apellido,
           item.fechaNacimiento,
@@ -122,19 +161,22 @@ export async function listarUsaurios() {
  *
  * para ser almacenada en el servidor SheetDB
  */
-export async function crearUsuario(usuario) {
+export async function subirUsuario(usuario) {
   const url = "https://sheetdb.io/api/v1/tv96lgxabh427?sheet=usuarios";
-  // Cremos un objeto con los datos del usuario
+  // Creemos un objeto con los datos del usuario
   const datosUsuario = {
     data: {
       id: "INCREMENT",
+      dni: usuario.dni,
+      correo: usuario.correo,
       nombre: usuario.nombre,
       apellido: usuario.apellido,
       fechaNacimiento: usuario.fechaNacimiento,
       usuario: usuario.usuario,
       clave: usuario.clave,
       foto: usuario.foto,
-      fotoMiniatura: usuario.fotoMiniatura,
+      fotoMiniatura: usuario.fotoMiniatura
+      
     },
   };
   // configuramos la solicitud POST
@@ -143,20 +185,20 @@ export async function crearUsuario(usuario) {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(datosUsuario),
   };
+
   // Enviamos la solicitud POST
-  fetch(url, opciones)
-    .then(async (response) => {
-      if (!response.ok) {
-        throw new Error("Error al guardar el usuario");
-      }
-      return await response.json();
-    })
-    .then((data) => {
-      console.log("Usuario Guardado Existosamente: ", data);
-    })
-    .catch((error) => {
-      console.error("Error ", error);
-    });
+  try {
+    const response = await fetch(url, opciones);
+    if (!response.ok) {
+      throw new Error("Error al guardar el usuario");
+    }
+    const data = await response.json();
+    //console.log("Usuario Guardado Existosamente: ", data);
+    return true;
+  } catch (error) {
+    console.error("Error ", error);
+    return false;
+  }
 }
 
 /********************************************************************/
