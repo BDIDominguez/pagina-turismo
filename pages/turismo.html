@@ -34,10 +34,13 @@
             <label for="formas_llegar">Formas de Llegar:</label>
             <textarea id="formas_llegar" rows="4" required></textarea>
 
-            <button type="button" onclick="guardarDatos()">Guardar Datos</button>
+            <button type="button" id="guardarDatos">Guardar Datos</button>
         </form>
+
+        <!-- Contenedor para mostrar los puntos turísticos -->
+        <div id="contenedor-puntos"></div>
     </div>
 
-    <script src="../assets/js/adriana1.js"></script>
+    <script src="../assets/js/adriana.js" defer></script> <!-- Usar defer para cargar después del DOM -->
 </body>
 </html>

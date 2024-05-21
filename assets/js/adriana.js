@@ -1,119 +1,185 @@
-import {Punto} from "./objetos.js"
-import {subirImagen, subirPuntoTuristico} from "./persistencia.js"
+//import { Punto } from "./datos.js";
+//import { subirImagen, subirPuntoTuristico } from "./datos.js";
 
-let adriana = new Punto ()
-adriana.id = 0
-adriana.nombre =  document.getElementById('nombre').value;
-adriana.provincia = document.getElementById('provincia').value;
-adriana.pais = document.getElementById('pais').value;
-adriana.descripcion = document.getElementById('descripcion').value;
-adriana.hospedajes = document.getElementById('hospedajes').value;
-adriana.transporte = document.getElementById('transporte').value;
-adriana.formas_llegar = document.getElementById('formas_llegar').value
+// comente los import y puse las funciones que necesitaba ademas de las que cree  dentro de mi script porque con el import no las tomaba
 
-// CREAREMOS UN PUNTOTURISTICO PERO LE AGREGAREMOS LA FOTO PARA QUE ESTE COMPLETO!!
-// EMPEZAREMOS CON LA OPCION DE CARGAR IMANGEN QUE ESTAMOS SACANDO DE LA PAGINA REGISTRAR.HTML
-// ESTE EJEMPLO SE LANZARA DESDE UNA VEZ CAMBIE EL ESTADO DEL INPUT QUE SE ENCUENTRA EN EL REGISTRAR.HTML
-// ES SOLO PARA PRUEBAS O BASARSE EN EL//
-const inputFile = document.getElementById('foto');
-    if (inputFile.files.length > 0) {
-        const [url, miniatura, success] = await subirImagen({ target: { files: [inputFile.files[0]] } });
-
+// Constructor de Punto
+function Punto(id, nombre, provincia, pais, descripcion, fotourl, miniaturaurl, hospedajes, transporte, formas_llegar) {
+    this.id = id;
+    this.nombre = nombre;
+    this.provincia = provincia;
+    this.pais = pais;
+    this.descripcion = descripcion;
+    this.fotourl = fotourl;
+    this.miniaturaurl = miniaturaurl;
+    this.hospedajes = hospedajes;
+    this.transporte = transporte;
+    this.formas_llegar = formas_llegar;
+}
   
-    // EN ESTE PUNTO TENEMOS LA IMAGEN GUARDADA O NO Y PODEMOS DECIDIR SI GUARDAR O NO EL PUNTO
-    if (success){ // Si dice que si creamos el Punto sacando los datos desde la pagina
-      //CARGAMOS UN PUNTO TURISTICO SIN LAS FOTOS ESO SERIA EL PASO SIGUIENTE"
-        let desc = document.getElementById('descripcion').value;
-        let punto = new Punto(
-            adriana.id,
-            adriana.nombre,
-            adriana.provincia,
-            adriana.pais,
-            desc,
-            url,
-            miniatura,
-            adriana.hospedajes,
-            adriana.transporte,
-            adriana.formas_llegar)
-        let vResp = subirPuntoTuristico(punto)
-        console.log(vResp)
-            
-    }else{
-      console.log("Error al cargar la imagen del punto por ende se cancela el proceso")
-    }
-    
-
-  }else {
-    console.log("No se Selecciono ningun archivo.")
-  }
-
-
-
-
-// FUNCION QUE SUBE UNA FOTO  CON ESTE METODO SE PUEDE CARGAR UNA IMAGEN AL SERVIDOR DE IMAGENS y nos regresa 3 datos
-// url  que contiene la direccion de la foto en formato grande, osea pesada pero de mejor calidad en formato https://...
-// miniatura tambien una url pero como dice de una foto en miniatura para una carga mas rapida tambien en formato http://....
-// y success que si tiene un true como valor es que la foto se subio sin problemas//
-
-const idinputFile = "foto"
-document.getElementById(idinputFile).addEventListener('change', async () => {
-  const inputFile = document.getElementById(idinputFile)
-  if (inputFile.files.length > 0 ){ // Verificamos que haya un archivo en el input
-    const [url, miniatura, success] = await subirImagen({ target: { files: [inputFile.files[0]] } })
-    console.log("URL de la imagen: ", url);
-    console.log("URL de la miniatura: ", miniatura);
-    console.log("Éxito: ", success);
-
-  }else {
-    console.log("No se Selecciono ningun archivo.")
-  }
-})
-
-
-
-
-
-    // Crear un objeto con los datos del formulario
-    const nuevoSitio = {
-        
-        "nombre": nombre,
-        "provincia": provincia,
-        "pais": pais,
-        "descripcion": descripcion,
-        "foto": foto,
-        "hospedajes": hospedajes,
-        "transporte": transporte,
-        "formas_llegar": formas_llegar
-    };
-
-    // Obtener los datos existentes del archivo JSON
-    fetch(urlApi)
-        .then(response => response.json())
-        .then(data => {
-            // Agregar el nuevo sitio al array de datos existentes
-            data.push(nuevoSitio);
-            // Convertir el objeto de datos a una cadena JSON
-            const jsonData = JSON.stringify(data, null, 4);
-            
-            // Crear un blob con los datos JSON
-            const blob = new Blob([jsonData], { type: 'application/json' });
-            
-            // Crear una URL para el blob
-            const blobURL = URL.createObjectURL(blob);
-            
-            // Crear un enlace para descargar el archivo JSON
-            const a = document.createElement('a');
-            a.href = blobURL;
-            a.download = 'index-data.json';
-            
-            // Simular un clic en el enlace
-            a.click();
-            
-            // Liberar el objeto URL creado
-            URL.revokeObjectURL(blobURL);
-        })
-        .catch(error => {
-            console.error('Error al obtener los datos del archivo JSON', error);
-            alert("Error al obtener los datos del archivo JSON");
+// Método para agregar un punto a la página
+Punto.prototype.agregarPunto = function(contenedor) {
+    // Crear elementos HTML
+    const contenedorPunto = document.createElement("div");
+    contenedorPunto.classList.add("index-punto");
+  
+    const elementoTitulo = document.createElement("h3");
+    elementoTitulo.textContent = this.nombre;
+  
+    const elementoDescripcion = document.createElement("p");
+    elementoDescripcion.textContent = this.descripcion;
+  
+    const elementoUbicacion = document.createElement("p");
+    elementoUbicacion.textContent = this.pais + " " + this.provincia;
+  
+    const elementoTransporte = document.createElement("p");
+    elementoTransporte.textContent = "Transportes: " + this.transporte + "; Formas de llegar: " + this.formas_llegar;
+  
+    const elementoHospedajes = document.createElement("p");
+    elementoHospedajes.textContent = "Hospedajes: " + this.hospedajes;
+  
+    const elementoImagen = document.createElement("img");
+    elementoImagen.src = this.miniaturaurl;
+  
+    // Agregar elementos al contenedor
+    contenedorPunto.appendChild(elementoImagen);
+    contenedorPunto.appendChild(elementoTitulo);
+    contenedorPunto.appendChild(elementoDescripcion);
+    contenedorPunto.appendChild(elementoUbicacion);
+    contenedorPunto.appendChild(elementoTransporte);
+    contenedorPunto.appendChild(elementoHospedajes);
+  
+    // Agregar contenedorPunto al contenedor principal
+    contenedor.appendChild(contenedorPunto);
+};
+  
+// Función para subir una imagen
+async function subirImagen(archivo) {
+    const archivoImagen = archivo.target.files[0];
+    const nombreArchivo = archivoImagen.name;
+    const nombreSinExtension = nombreArchivo.replace(/\.[^/.]+$/, "");
+    const url = `https://api.imgbb.com/1/upload?key=fb47470933bd10712434f449f011599a&name=${nombreSinExtension}`;
+    const data = new FormData();
+    data.append("image", archivoImagen);
+    try {
+        const respuesta = await fetch(url, {
+            method: "POST",
+            body: data,
         });
-
+        const datosregresados = await respuesta.json();
+        return [datosregresados.data.url, datosregresados.data.thumb.url, datosregresados.success];
+    } catch (error) {
+        console.error(error);
+    }
+}
+  
+// Función para subir un punto turístico
+async function subirPuntoTuristico(punto){
+    try {
+        const url = `https://sheetdb.io/api/v1/tv96lgxabh427`;
+        const datosPunto = {
+            data: {
+                id: "INCREMENT",
+                nombre: punto.nombre,
+                provincia: punto.provincia,
+                pais: punto.pais,
+                descripcion: punto.descripcion,
+                fotourl: punto.fotourl,
+                miniaturaurl: punto.miniaturaurl,
+                hospedajes: punto.hospedajes,
+                transporte: punto.transporte,
+                formas_llegar: punto.formas_llegar
+            },
+        };
+        const opciones = {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(datosPunto),
+        };
+        const response = await fetch(url, opciones);
+        if (!response.ok){
+            throw new Error("Error al guardar el Punto Turistico");
+        }
+        const data =  await response.json();
+        return true; // Si se guardo bien
+    } catch(error) {
+        console.error("Error ", error);
+        return false;
+    }
+}
+  
+// Función para guardar datos
+async function guardarDatos() {
+    try {
+        // Obtener los valores de los campos del formulario
+        const nombre = document.getElementById('nombre').value;
+        const provincia = document.getElementById('provincia').value;
+        const pais = document.getElementById('pais').value;
+        const descripcion = document.getElementById('descripcion').value;
+        const hospedajes = document.getElementById('hospedajes').value;
+        const transporte = document.getElementById('transporte').value;
+        const formas_llegar = document.getElementById('formas_llegar').value;
+        const elementoImagen = document.getElementById('foto');
+  
+        console.log("Datos del formulario obtenidos:");
+  
+        // Verificar si se ha seleccionado un archivo de imagen
+        if (elementoImagen.files.length > 0) {
+            console.log("Archivo de imagen seleccionado. Procediendo a subir la imagen...");
+  
+            // Subir la imagen
+            const [url, miniatura, success] = await subirImagen({ target: { files: [elementoImagen.files[0]] } });
+  
+            console.log("Resultado de la subida de imagen:", { url, miniatura, success });
+  
+            // Verificar si la imagen se subió correctamente
+            if (success) {
+                // Crear un nuevo punto turístico con los datos del formulario y la imagen subida
+                const punto = new Punto(0, nombre, provincia, pais, descripcion, url, miniatura, hospedajes, transporte, formas_llegar);
+  
+                console.log("Punto turístico creado:", punto);
+  
+                // Subir el punto turístico a la base de datos
+                const vResp = await subirPuntoTuristico(punto);
+                console.log("Respuesta de la subida del punto turístico:", vResp);
+  
+                // Si se ha subido correctamente, agregar el punto turístico a la página
+                if (vResp) {
+                    // Obtener el contenedor donde se agregarán los puntos turísticos
+                    const contenedor = document.getElementById("contenedor-puntos");
+                    // Agregar el punto turístico al contenedor
+                    punto.agregarPunto(contenedor);
+                } else {
+                    console.log("Error al guardar el punto turístico, no se agregará a la página.");
+                }
+            } else {
+                console.log("Error al cargar la imagen del punto, por lo tanto, se cancela el proceso.");
+            }
+        } else {
+            console.log("No se seleccionó ningún archivo de imagen.");
+        }
+    } catch (error) {
+        console.error("Error al guardar los datos:", error);
+    }
+}
+  
+document.addEventListener("DOMContentLoaded", function() {
+    // Función para manejar la vista previa de la imagen seleccionada
+    document.getElementById("foto").addEventListener("change", e => {
+        const elementoImagen = document.getElementById("registrar-foto-actual");
+  
+        if (e.target.files[0]) { // Si existe algún archivo, regresa true
+            const lector = new FileReader();
+            lector.onload = function(evento) {
+                elementoImagen.src = evento.target.result;
+            };
+    
+            lector.readAsDataURL(e.target.files[0]);
+        } else {
+            elementoImagen.src = "https://i.ibb.co/8MPLpzp/imagen.jpg";
+        }
+    });
+    
+    // Agregar evento click al botón "Guardar Datos"
+    document.getElementById("guardarDatos").addEventListener("click", guardarDatos);
+});  
