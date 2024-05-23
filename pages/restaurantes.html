@@ -11,52 +11,20 @@
     <section class="contenedor">
       <h1>Restaurantes en .....</h1>
       <div class="sombra pdg-18 card-resto">
-        <!-- <form>
-          <fieldset>
-            <legend>Filtrar por:</legend>
-
-          <div style="border: 1px solid salmon;">
-            <div>
-              <input type="text" placeholder="Ubicación ">
-            </div>
-
-            <div>
-              <input type="text" placeholder="Servicios ">
-            </div>
-
-            <div>
-              <input type="text" placeholder="Precio ">
-            </div>
-
-            <div>
-              <input type="text" placeholder="Cocina ">
-            </div>
-
-            <div>
-              <input type="text" placeholder="Comidas ">
-            </div>
-
-            <div>
-              <input type="text" placeholder="Invitados">
-            </div>
-          </div>
-          </fieldset>
-        </form> -->
-
-        <form class="filter-form">
-          <div class="filter-row">
-            <div class="filter-item">
-              <label for="location">Ubicación:</label>
-              <select id="location">
+        <form class="filtro-formulario">
+          <div class="filtro-fila">
+            <div class="filtro-elemento">
+              <label for="ubicacion">Ubicación:</label>
+              <select id="ubicacion">
                 <option value="">Todas</option>
-                <option value="center">Centro</option>
-                <option value="north">Norte</option>
-                <option value="south">Sur</option>
+                <option value="centro">Centro</option>
+                <option value="norte">Norte</option>
+                <option value="sur">Sur</option>
               </select>
             </div>
-            <div class="filter-item">
-              <label for="services" class="fix-letter">Servicios:</label>
-              <select id="services">
+            <div class="filtro-elemento">
+              <label for="servicios" class="fix-letter">Servicios:</label>
+              <select id="servicios">
                 <option value="">Todos</option>
                 <option value="wifi">Wi-Fi</option>
                 <option value="parking">Estacionamiento</option>
@@ -65,10 +33,10 @@
             </div>            
           </div>
           <div class="filter-row">
-            <div class="filter-item">
-              <label for="guests">Invitados:</label>
-              <select id="guests">
-                <option value="">Todos</option>
+            <div class="filtro-elemento">
+              <label for="invitados">Invitados:</label>
+              <select id="invitados">
+                <option value="">-- Seleccionar --</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="4">4</option>
@@ -123,15 +91,52 @@
           </div>
           <div class="descripcion-restaurante">
             <a class="nombre-restaurant" href="#">Frenessí Buenos Aires</a>
-            <strong>Valoración:</strong> <span>4</span>
-            <strong>Telefóno:</strong> <span>+ 54 11 3666-8510</span>
-            <span>Página web</span>
-            <p>Juana Manso 1860, Planta Baja Puerto Madero, Buenos Aires Argentina</p>
-            <p>Horario de Atención</p>
+            <!-- <img src="/assets/icons/star.svg" alt=""> -->
+
             
+            <div class="infomacion-inicio">
+              <span>
+                <svg class="UctUV d H0" viewBox="0 0 128 24" width="88" height="16" fill="#ff9300">
+                  <path d="M 12 0C5.388 0 0 5.388 0 12s5.388 12 12 12 12-5.38 12-12c0-6.612-5.38-12-12-12z" transform=""></path>
+                  <path d="M 12 0C5.388 0 0 5.388 0 12s5.388 12 12 12 12-5.38 12-12c0-6.612-5.38-12-12-12z" transform="translate(26 0)"></path>
+                  <path d="M 12 0C5.388 0 0 5.388 0 12s5.388 12 12 12 12-5.38 12-12c0-6.612-5.38-12-12-12z" transform="translate(52 0)"/>
+                  <path d="M 12 0C5.388 0 0 5.388 0 12s5.388 12 12 12 12-5.38 12-12c0-6.612-5.38-12-12-12z" transform="translate(78 0)"/>
+                  <path d="M 12 0C5.389 0 0 5.389 0 12c0 6.62 5.389 12 12 12 6.62 0 12-5.379 12-12S18.621 0 12 0zm0 2a9.984 9.984 0 0110 10 9.976 9.976 0 01-10 10z" transform="translate(104 0)"/></path>
+                </svg>
+              </span>
+
+              <span class="telefono">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-phone" width="25" height="24" viewBox="0 0 24 24" stroke="#ff9300" fill="#ff9300" stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                  <path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2" />
+                </svg>
+                <a href="tel:+ 54 11 3666-8510" >+ 54 11 3666-8510</a>
+              </span>
+
+
+              <span class="reloj-horario">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock-hour-5" width="25" height="25" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ff9300" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                  <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+                  <path d="M12 12l2 3" />
+                  <path d="M12 7v5" />
+                </svg>
+                <p class="horario-atencion">15:00 - 22:00 hrs</p>
+              </span>
+            </div>
+          
+            <div class="ubicacion">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-map-pin" width="25" height="25" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ff9300" fill="none">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
+                <path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z" />
+              </svg>
+              <p>Juana Manso 1860, Planta Baja Puerto Madero, Buenos Aires Argentina</p>
+            </div>
+            <hr>
             <p>"Increible"</p>
             <p>"Asombroso, increíble, un “must”"</p>
-            <a href="#">Reservar</a>
+            <a class="boton-reservar" href="#">Reservar</a>
           </div>
         </div>
       </div>
@@ -139,19 +144,53 @@
       <div class="sombra mgb-20 pdg-18 card-resto">
         <div class="restaurante-info">
           <div>
-            <img class="imagen-restaurante" src="/assets/images/restaurants/vive-cafe_1.jpg" alt="Vive Café Buenos Aires">
+            <img class="imagen-restaurante" src="/assets/images/restaurants/vive-cafe.jpg" alt="Vive Café Buenos Aires">
           </div>
           <div class="descripcion-restaurante">
             <a class="nombre-restaurant" href="#">Vive Café</a>
-            <strong>Valoración:</strong> <span>4</span>
-            <strong>Telefóno:</strong> <span>+54 11 4774-5461</span>
-            <span>Página web</span>
-            <p>Costa Rica 5722, Buenos Aires 1414 Argentina</p>
-            <p>Horario de Atención</p>
-            
+            <div class="infomacion-inicio">
+              <span>
+                <svg class="UctUV d H0" viewBox="0 0 128 24" width="88" height="16" fill="#ff9300">
+                  <path d="M 12 0C5.388 0 0 5.388 0 12s5.388 12 12 12 12-5.38 12-12c0-6.612-5.38-12-12-12z" transform=""></path>
+                  <path d="M 12 0C5.388 0 0 5.388 0 12s5.388 12 12 12 12-5.38 12-12c0-6.612-5.38-12-12-12z" transform="translate(26 0)"></path>
+                  <path d="M 12 0C5.388 0 0 5.388 0 12s5.388 12 12 12 12-5.38 12-12c0-6.612-5.38-12-12-12z" transform="translate(52 0)"/>
+                  <path d="M 12 0C5.388 0 0 5.388 0 12s5.388 12 12 12 12-5.38 12-12c0-6.612-5.38-12-12-12z" transform="translate(78 0)"/>
+                  <!-- <path d="M 12 0C5.389 0 0 5.389 0 12c0 6.62 5.389 12 12 12 6.62 0 12-5.379 12-12S18.621 0 12 0zm0 2a9.984 9.984 0 0110 10 9.976 9.976 0 01-10 10z" transform="translate(104 0)"/></path> -->
+                </svg>
+              </span>
+
+              <span class="telefono">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-phone" width="25" height="24" viewBox="0 0 24 24" stroke="#ff9300" fill="#ff9300" stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                  <path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2" />
+                </svg>
+                <a href="+54 11 4774-5461" >+54 11 4774-5461</a>
+              </span>
+
+
+              <span class="reloj-horario">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock-hour-5" width="25" height="25" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ff9300" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+                <path d="M12 12l2 3" />
+                <path d="M12 7v5" />
+              </svg>
+              <p class="horario-atencion">14:00 - 23:00 hrs</p>
+              </span>
+            </div>
+
+            <div class="ubicacion">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-map-pin" width="25" height="25" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ff9300" fill="none">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
+                <path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z" />
+              </svg>
+              <p>Costa Rica 5722, Buenos Aires 1414 Argentina</p>
+            </div>            
+            <hr>
             <p>"El mejor café de BA"</p>
             <p>"La mejor cafetería en Buenos aires"</p>
-            <a href="#">Reservar</a>
+            <a class="boton-reservar" href="#">Reservar</a>
           </div>
         </div>
       </div>
@@ -163,15 +202,51 @@
           </div>
           <div class="descripcion-restaurante">
             <a class="nombre-restaurant" href="#">4ta Pared</a>
-            <strong>Valoración:</strong> <span>Valoración: 4</span>
-            <strong>Telefóno:</strong> <span>+ 54 11 3666-8510</span>
-            <span>Página web</span>
-            <p>Calle Habana 3499, Buenos Aires C1419GQA Argentina</p>
-            <p>Horario de Atención</p>
-            
+
+
+            <div class="infomacion-inicio">
+              <span>
+                <svg class="UctUV d H0" viewBox="0 0 128 24" width="88" height="16" fill="#ff9300">
+                  <path d="M 12 0C5.388 0 0 5.388 0 12s5.388 12 12 12 12-5.38 12-12c0-6.612-5.38-12-12-12z" transform=""></path>
+                  <path d="M 12 0C5.388 0 0 5.388 0 12s5.388 12 12 12 12-5.38 12-12c0-6.612-5.38-12-12-12z" transform="translate(26 0)"></path>
+                  <path d="M 12 0C5.388 0 0 5.388 0 12s5.388 12 12 12 12-5.38 12-12c0-6.612-5.38-12-12-12z" transform="translate(52 0)"/>
+                  <path d="M 12 0C5.388 0 0 5.388 0 12s5.388 12 12 12 12-5.38 12-12c0-6.612-5.38-12-12-12z" transform="translate(78 0)"/>
+                  <path d="M 12 0C5.389 0 0 5.389 0 12c0 6.62 5.389 12 12 12 6.62 0 12-5.379 12-12S18.621 0 12 0zm0 2a9.984 9.984 0 0110 10 9.976 9.976 0 01-10 10z" transform="translate(104 0)"/></path>
+                </svg>
+              </span>
+
+              <span class="telefono">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-phone" width="25" height="24" viewBox="0 0 24 24" stroke="#ff9300" fill="#ff9300" stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                  <path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2" />
+                </svg>
+                <a href="tel:+ 54 11 3666-8510" >+ 54 11 3666-8510</a>
+              </span>
+
+
+              <span class="reloj-horario">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock-hour-5" width="25" height="25" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ff9300" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+                <path d="M12 12l2 3" />
+                <path d="M12 7v5" />
+                </svg>
+                <p class="horario-atencion">15:00 - 22:00 hrs</p>
+              </span>
+            </div>
+
+            <div class="ubicacion">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-map-pin" width="25" height="25" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ff9300" fill="none">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
+                <path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z" />
+              </svg>
+              <p>Calle Habana 3499, Buenos Aires C1419GQA Argentina</p>
+            </div>
+            <hr>
             <p>"Super recomendado"</p>
             <p>"Tanto la atención como el lugar son muy buenas"</p>
-            <a href="#">Reservar</a>
+            <a class="boton-reservar" href="#">Reservar</a>
           </div>
         </div>
       </div>
@@ -181,19 +256,56 @@
           <div>
             <img class="imagen-restaurante" src="/assets/images/restaurants/criolla-cooking-y-wine.jpg" alt="Criolla Cooking y Wine">
           </div>
-          <div>
+          <div class="descripcion-restaurante">
             <a class="nombre-restaurant" href="#">Criolla Cooking & Wine</a>
-            <strong>Valoración:</strong> <span>Valoración: 5</span>
-            <strong>Telefóno:</strong> <span>+54 9 11 5984-2884</span>
-            <span>Página web</span>
-            <p>Gorriti 4832, Buenos Aires 1414 Argentina</p>
-            <p>Horario de Atención</p>
-            
-            <p>"Must si te gusta cocinar"</p>
-            <p>"Una experiencia que vale la pena tomar"</p>
-            <a href="#">Reservar</a>
+
+            <div class="infomacion-inicio">
+              <span>
+                <svg class="UctUV d H0" viewBox="0 0 128 24" width="88" height="16" fill="#ff9300">
+                  <path d="M 12 0C5.388 0 0 5.388 0 12s5.388 12 12 12 12-5.38 12-12c0-6.612-5.38-12-12-12z" transform=""></path>
+                  <path d="M 12 0C5.388 0 0 5.388 0 12s5.388 12 12 12 12-5.38 12-12c0-6.612-5.38-12-12-12z" transform="translate(26 0)"></path>
+                  <path d="M 12 0C5.388 0 0 5.388 0 12s5.388 12 12 12 12-5.38 12-12c0-6.612-5.38-12-12-12z" transform="translate(52 0)"/>
+                  <path d="M 12 0C5.388 0 0 5.388 0 12s5.388 12 12 12 12-5.38 12-12c0-6.612-5.38-12-12-12z" transform="translate(78 0)"/>
+                  <path d="M 12 0C5.388 0 0 5.388 0 12s5.388 12 12 12 12-5.38 12-12c0-6.612-5.38-12-12-12z" transform="translate(105 0)"/>
+                  <!-- <path d="M 12 0C5.389 0 0 5.389 0 12c0 6.62 5.389 12 12 12 6.62 0 12-5.379 12-12S18.621 0 12 0zm0 2a9.984 9.984 0 0110 10 9.976 9.976 0 01-10 10z" transform="translate(104 0)"/></path> -->
+                </svg>
+              </span>
+
+              <span class="telefono">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-phone" width="25" height="24" viewBox="0 0 24 24" stroke="#ff9300" fill="#ff9300" stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                  <path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2" />
+                </svg>
+                <a href="tel:+54 9 11 5984-2884" >+54 9 11 5984-2884</a>
+              </span>
+
+
+              <span class="reloj-horario">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock-hour-5" width="25" height="25" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ff9300" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                  <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+                  <path d="M12 12l2 3" />
+                  <path d="M12 7v5" />
+                </svg>
+                <p class="horario-atencion">12:00 - 22:00 hrs</p>
+              </span>
+            </div>
+
+            <div class="ubicacion">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-map-pin" width="25" height="25" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ff9300" fill="none">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
+                <path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z" />
+              </svg>
+              <p>Gorriti 4832, Buenos Aires 1414 Argentina</p>
+            </div>
+            <hr>
+            <p class="texto-resenia">"Me encantó la dinámica y lo participativo!!! El participante se involucra en todo el proceso y es protagonista eso me pareció genial</p>
+            <a class="boton-reservar" href="#">Reservar</a>
           </div>
         </div>
+
+        
       </div>
     </main>
     <!-- fin de tarjetas restaurantes -->

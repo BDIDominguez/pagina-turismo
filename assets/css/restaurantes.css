@@ -2,7 +2,7 @@ body {
   font-family: sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f2f2f2;
+  background-color: #f9f9f9;
 }
 
 .contenedor {
@@ -26,18 +26,18 @@ h1 {
   padding: 20px;
 }
 
-.filter-form {
+.filtro-formulario{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 10px;
 }
 
-.filter-row {
+.filtro-fila {
   display: flex;
   flex-wrap: wrap;
 }
 
-.filter-item {
+.filtro-elemento {
   flex-basis: 100%;
   margin-bottom: 10px;
 }
@@ -73,6 +73,7 @@ select {
 .imagen-restaurante {
   border-radius: 8px;
   width: 450px;
+  height: 338px;
 }
 
 .descripcion-restaurante {
@@ -88,12 +89,83 @@ a {
 }
 
 .nombre-restaurant {
-  font-size: 30px;
+  font-size: 28px;
   display: block;
-  margin-bottom: 20px;
+  margin-bottom: 8px;
+}
+
+.nombre-restaurant:hover {
+  color: #545454;
+  text-decoration: underline;
 }
 
 .card-resto {
   background-color: #fff;
 }
 
+.card-resto:hover {
+  /* background-color: #f5f5f5; */
+  transition: background-color .8s;
+}
+
+hr {
+  color: rgb(230, 230, 230);
+  background-color: red;
+}
+
+.boton-reservar {
+  display: inline-block;
+  background-color: #fc7f16;
+  padding: 14px 30px;
+  border-radius: 8px;
+  margin-top: 10px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.boton-reservar:hover {
+  background-color: #fd8a2b;
+}
+
+.boton-reservar:active {
+  background-color: #fd943f;
+  background-color: #ffa155;
+}
+
+.infomacion-inicio {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 80px;
+}
+
+
+.telefono {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.ubicacion {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+}
+
+.reloj-horario{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+.horario-atencion {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.texto-resenia {
+  line-height: 1.5;
+}
