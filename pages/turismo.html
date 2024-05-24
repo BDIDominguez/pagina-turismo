@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario de Sitios Turísticos</title>
-    <link rel="stylesheet" href="../assets/css/styles.css">
-    
+    <link rel="icon" href="" type="image/x-icon">  <!-- Con esto dejo de molestar el error en Chrome XD-->
+    <link rel="stylesheet" href="../assets/css/styles.css"> <!-- Enlace al CSS específico de turismo.html -->
 </head>
 <body>
     <div class="container">
-        <h1>Formulario de Sitios Turísticos</h1>
+        <h1>Contanos tu experiencia</h1>
         <form id="formulario">
-            <label for="nombre">Nombre del Sitio:</label>
+            <label for="nombre">Turismo:</label>
             <input type="text" id="nombre" required>
 
             <label for="provincia">Provincia:</label>
@@ -35,10 +35,13 @@
             <label for="formas_llegar">Formas de Llegar:</label>
             <textarea id="formas_llegar" rows="4" required></textarea>
 
-            <button type="button" onclick="guardarDatos()">Guardar Datos</button>
+            <button type="button" id="guardarDatos">Guardar Datos</button>
         </form>
+
+        <!-- Contenedor para mostrar los puntos turísticos -->
+        <div id="contenedor-puntos"></div>
     </div>
 
-    <script src="../assets/js/adriana.js"></script>
+    <script src="./assets/js/adriana.js"></script>
 </body>
 </html>
